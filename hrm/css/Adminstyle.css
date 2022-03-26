@@ -88,7 +88,7 @@
             width: 35px;
             height: 35px;
             border-radius: 50px;
-            background-image: url('./dot.png');
+            background-image: url('../assets/dot.png');
             background-size: 35px;
             border: 0;
             background-color: transparent;
