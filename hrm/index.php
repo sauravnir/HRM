@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../CSS/frontpage.css">
 </head>
 <body>
-    <header>
+    <!-- <header>
         <main>
             <div class="left">
                 <h3>Welcome to........</h3>
@@ -17,6 +17,15 @@
                 <a href="../HTML/main.php" class="btn1">Get Started!</a>
             </div>
         </main>
-    </header>
+    </header> -->
+    <div class="index-ctn">
+        <div class="opaque-bg"></div>
+        <img src="../assets/main1.jpg" alt="">
+        <div class="title-ctn">
+            <h1>Welcome to Quanite Creations</h1>
+            <h5>A Human Resource Management System</h5>  
+        </div>
+        <a href="../HTML/main.php"><button class="btn"><span>Get Started!</span></button></a>
+    </div>
 </body>
 </html>
