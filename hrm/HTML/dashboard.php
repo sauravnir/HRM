@@ -11,8 +11,11 @@
     
     <div class="main">    
         <div class="leftSidebar">
-            <h2>Quinate Creations</h2>
-
+            <div class="logo-ctn">
+                <img src="../assets/logo.png" alt=""> 
+                <h3>Quinate Creations</h3>
+            </div>
+            <!-- Tabs for sidebar -->
             <div class="tabs">
                 <a href="dashboard.php"><div class="tab active"><img src="../assets/dashboard.png" alt=""> <h5>Dashboard</h5></div></a>
                 <a href="empreg.php"><div class="tab"><img src="../assets/employeeAdd.png" alt=""> <h5>Create Employee</h5></div></a>
@@ -24,7 +27,10 @@
         </div>
         <div class="main-container"> 
             <div class="top-bar">
+                <!-- Toggle Sidebar -->
                 <button id="toggle" class="circle"></button>
+
+                <!-- Account Profile Container -->
                 <div class="prf-container">
                     <div class="prf-circle">
                         <img src="../assets/pp.png" alt="">
@@ -34,7 +40,7 @@
             </div>
             
             <div class="dashboard-content">
-                <h1>Dashboard</h1>
+                <h1 class="ContentTitle">Dashboard</h1>
                 <br>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales in libero at tempor. Fusce tincidunt sed ante vel lacinia. Sed tempus lacinia nulla. Pellentesque aliquam quam id ex vulputate, sit amet fermentum nibh imperdiet. Nam condimentum elit at erat gravida, non facilisis massa feugiat. Pellentesque lacinia dui lorem, vitae tempor erat porttitor nec. Fusce ultrices velit at lorem fermentum iaculis. Nullam blandit, neque at pretium suscipit, magna augue accumsan lectus, at fermentum orci nulla sit amet enim. Donec eleifend justo a odio mattis, et tempus arcu congue. Sed et lacus lorem. Aliquam id vestibulum urna, nec placerat ex. Aenean eget euismod lectus. Proin nec ultrices ipsum, ut lobortis lacus. Cras euismod gravida odio, quis feugiat elit egestas eu.
