@@ -46,7 +46,7 @@
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Password" name="admin_password" required />
                     </div>
-                    <input type="submit" class="btn" value="Login" name="login">
+                    <input type="submit" class="btn" value="Login" name="login" >
 
 
                 </form>
