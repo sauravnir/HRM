@@ -707,3 +707,14 @@ a:nth-child(3) img {
   font-weight: bolder; */
 
 /* } */
+
+
+#print{
+  float: right;
+  font-size: 20px;
+}
+
+#back{
+  float:left;
+  font-size:20px;
+}

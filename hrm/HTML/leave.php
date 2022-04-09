@@ -43,8 +43,8 @@
                         <h5>Leave Request</h5>
                     </div>
                 </a>
-                <div class="tab1"><img src="../assets/logout.png" alt="">
-                    <button id="logout" onclick="logOut()">Logout</button>
+                <div class="tab1">
+                    <!-- <button id="logout" onclick="logOut()">Logout</button> -->
                 </div>
 
             </div>
@@ -103,9 +103,8 @@ if($result->num_rows>0){
     
     if(isset($_POST['open'])){
         echo'<script> Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Work in progress!",
+            icon: "warning",
+            title: "Work in progress",
           })</script>';
     }
 }

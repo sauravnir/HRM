@@ -120,6 +120,7 @@
             </div>
         </div>
     </div>
+    <script src="../JS/nav-bar.js"></script>
     <script src="../JS/dashboard.js"></script>
 
 </body>

@@ -1,4 +1,3 @@
-//for transition animation in the main login page 
 
 //for dashboard navigation
 let clicked = false
@@ -17,6 +16,7 @@ document.getElementById("toggle").addEventListener("click", function () {
         clicked = false
     }
 })
+
 
 //for logout button 
 function logOut() {
@@ -76,4 +76,69 @@ function imageClicker3(){
     })
 }
 
+function deleteThis() {
+    Swal.fire({
+        icon:"error",
+        title:"Opss..",
+        text:"You have delete this data!"
+    })
+  }
 
+
+function printT(){
+    window.print()
+}
+
+
+// function employeeCreate(){
+//     Swal.fire({
+//         title: "Are you sure?",
+//         icon: "tick",
+//         showCancelButton: true,
+//         confirmButtonColor: "#3085d6",
+//         cancelButtonColor: "#d33",
+//         confirmButtonText: "Create"
+//     }).then((result) => {
+//         if (result.isConfirmed) {
+//             Swal.fire(
+//                 window.location.href = "../PHP/registration.php"
+//             )
+//         }
+//     })
+// }
+
+// function cancel(){
+//     Swal.fire({
+//         title: 'Are you sure?',
+//         // text: "You won't be able to revert this!",
+//         icon: 'warning',
+//         showCancelButton: true,
+//         confirmButtonColor: '#3085d6',
+//         cancelButtonColor: '#d33',
+//         confirmButtonText: 'Yes'
+//       }).then((result) => {
+//         if (result.isConfirmed) {
+//           Swal.fire(
+//             window.location.href='../HTML/dashboard.php'
+//           )
+//         }
+//       })
+// }
+
+
+function payroll(){
+    Swal.fire({
+        title: "Are you sure?",
+        icon: "tick",
+        showCancelButton: true,
+        confirmButtonColor: "green",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Make Payment"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                window.location.href = "../PHP/payment.php"
+            )
+        }
+    })
+}

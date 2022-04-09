@@ -42,8 +42,7 @@
                     </div>
                 </a>
                 
-                <div class="tab1"><img src="../assets/logout.png" alt="">
-                    <button id="logout" onclick="logOut()">Logout</button>
+                <div class="tab1">                    <!-- <button id="logout" onclick="logOut()">Logout</button> -->
                 </div>
 
             </div>
@@ -76,41 +75,89 @@
                     <tbody>
 
                         <?php 
+                session_start();
 
-
-$db_select ="SELECT id,first_name,last_name,department from employee";
-$result = $dbconnection -> query($db_select);
+        // $test = $_SESSION['id'];
+        // $db_select ="SELECT id,first_name,last_name,department from employee";
+        $db_select ="SELECT * from employee";
+        $result = $dbconnection -> query($db_select);
 
 if($result->num_rows>0){
     while ($row = $result->fetch_assoc()){
         $s_num = $row['id'];
-        // $_SESSION['id']=$s_num;
+        
         $depart = $row['department'];
-        // $_SESSION['department']=$depart;    
+          
         $f_name = $row['first_name'];
-        // $_SESSION['first_name']=$f_name;
+        
         $l_name = $row['last_name'];
-        // $_SESSION['last_name']=$l_name;
+        
         $name = $row['first_name']." ".$row['last_name'];;
-        // $_SESSION['first_name']['last_name']=$name; 
+
+        $employ_id = $row['employee_id'];
+
+        $pay_date = $row['payment_date'];
+
+        $pay_details=$row['payment_details'];
+
+        $status = $row['status'];
+
+        $amount = $row['amount'];
+
+        $bank_acc=$row['bankAcc'];  
+
+        $contact = $row['contact'];
+       
+        //defining session variable
+        // $_SESSION['employee_id'] =$employ_id;
+        // $_SESSION['payment_date']=$pay_date;
+        // $_SESSION['payment_details']=$pay_details;
+        // $_SESSION['status']=$status;
+        // $_SESSION['amount']=$amount;
+        // $_SESSION['bankAcc'] =$bank_acc;
+
+
+        // Defining session variables
+        $_SESSION['id']=$s_num;
+        $_SESSION['department']=$depart;  
+        $_SESSION['last_name']=$l_name;
+        $_SESSION['full_name']=$name; 
+        $_SESSION['first_name']=$f_name;
+        
 
         echo "
         <tr class='columns'>
                             <td> $s_num </td>
                             <td> $depart</td>
-                            <td> $name </td>
-                            <td><form method='post'><input type='submit' class='table' name='details' value='Details' style='background-color:#04AA6D'></form>
-                            <form method='post'><input type='submit' class='table' name='delete' value='Delete' style='background-color:red'><form></td>
-                        </tr>";
+                            <td> $name </td>"; ?>
+                            <td><form method="post">
+                            <!-- <input type="button" value="Details" class="table" style="background-color:#04AA6D;"><a style="color:white;" href="">EDIT ME </a> -->
+                            <input class="table" name="details" value="Details" onclick="location.href='salary.php?employID= <?php echo $employ_id; ?>&forename=<?php echo $name;?>&payDate=<?php echo $pay_date;?>&payDetails=<?php echo $pay_details;?>&status=<?php echo $status;?>&amount=<?php echo $amount;?>&bankacc=<?php echo $bank_acc;?>&contact=<?php echo $contact?>'" style="background-color:#04AA6D; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;">    
+                            <form method="post"><input type="submit" class="table" name="delete" value="Delete" style="background-color:red; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;"><form>
+                        </form></td>
+                            <?php
+                                // <td><form method="post">
+                                // <a href="salary.php?ida=echo '$s_num'">
+                                // </form>
+                                // <form method="post"><input type="submit" class="table" name="delete" value="Delete" style="background-color:red"><form></td>
+                            echo '</tr>';
 
+                        // <input type="submit" class="table" name="details" value="Details" onclick="location.href=./salary.php" style="background-color:#04AA6D">
 
                         
-                        if(isset($_POST['details'])){
-                            header("Location:../HTML/salary.php");
-                         }
+                        // if(isset($_POST['details'])){
+                        //     // $_SESSION['employee_id'] =$employ_id;
+                        //     // $_SESSION['payment_date']=$pay_date;
+                        //     // $_SESSION['payment_details']=$pay_details;
+                        //     // $_SESSION['status']=$status;
+                        //     // $_SESSION['amount']=$amount;
+                        //     // $_SESSION['bankAcc'] =$bank_acc;
+                        //     // echo $bank_acc;
+                        //     // header("Location:../HTML/salary.php?ida=$s_num");
+                        // }
 
 
-                         if(isset($_POST['delete'])){
+                        if(isset($_POST['delete'])){
     
                             echo '<script>
                             Swal.fire({
@@ -123,62 +170,13 @@ if($result->num_rows>0){
                                 confirmButtonText: "Yes, delete it!"
                               }).then((result) => {
                                 if (result.isConfirmed) {
-                                  Swal.fire(
-                                    "Deleted!",
-                                    "Your file has been deleted.",
-                                    "success"
-                                  )
+                                window.location.href="../PHP/deleting.php";
                                 }
                               })
                             // </script>';
                             
-                            // $data_del = "DELETE from employee WHERE first_name= '$f_name' AND last_name='$l_name'";
-                            // $result1= $dbconnection -> query($data_del);
-                            // header("Location:details.php");
                         }
 }
-
-// if(isset($_POST['details'])){
-
-// }
-
-// if(isset($_POST['details'])){
-//    header("Location:../HTML/salary.php");
-//     // echo' 
-//     // <script> 
-//     //     function newPage(){
-//     //         window.location.href="salary.php";
-//     //     }
-//     // </script>
-//     // ';
-// }
-
-// if(isset($_POST['delete'])){
-    
-//     echo '<script>
-//     Swal.fire({
-//         title: "Are you sure?",
-//         text: "You wont be able to revert this!",
-//         icon: "warning",
-//         showCancelButton: true,
-//         confirmButtonColor: "#3085d6",
-//         cancelButtonColor: "#d33",
-//         confirmButtonText: "Yes, delete it!"
-//       }).then((result) => {
-//         if (result.isConfirmed) {
-//           Swal.fire(
-//             "Deleted!",
-//             "Your file has been deleted.",
-//             "success"
-//           )
-//         }
-//       })
-//     // </script>';
-    
-//     // $data_del = "DELETE from employee WHERE first_name= '$f_name' AND last_name='$l_name'";
-//     // $result1= $dbconnection -> query($data_del);
-//     // header("Location:details.php");
-// }
 }
 ?>
 
@@ -191,5 +189,4 @@ if($result->num_rows>0){
     </div>
     <script src="../JS/dashboard.js"></script>
 </body>
-
 </html>

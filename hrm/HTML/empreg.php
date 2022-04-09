@@ -44,8 +44,8 @@
         
 
         <!-- not working!!!!!!!!! -->
-        <div class="tab1"><img src="../assets/logout.png" alt="">
-                    <button id="logout" onclick="logOut()">Logout</button>
+        <div class="tab1">
+                    <!-- <button id="logout" onclick="logOut()">Logout</button> -->
                 </div>
         
                 
@@ -94,8 +94,8 @@
                     <label for=""> Employee ID: </label>
                     <input type="text" name="employeeid" placeholder="Employee-Id" size="15" required />
 
-                    <label>Transaction Id:</label>
-                    <input type="text" name="transid" placeholder="eg. 145467321456733" size="15" required>
+                    <label>Bank Account:</label>
+                    <input type="text" name="bankAcc" placeholder="eg.145467321456733" size="15" required>
                     
                     <div>
                       <label>Contact :</label>
@@ -135,13 +135,11 @@
         </div>
 
       </div>
-
     </div>
   </div>
   
 
   <script src="../JS/dashboard.js"></script>
-  <script src="../JS/nav-bar.js"></script>
 </body>
 
 </html>

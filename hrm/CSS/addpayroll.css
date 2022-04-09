@@ -241,7 +241,7 @@ a:nth-child(3) img {
         font-size: 14px;
     }
     .input-ctn input{
-        width: 90%;
+        width: 60%;
         height: 30px;
         padding-left: 10px;
         border: 0.5px solid rgb(184, 184, 184)

@@ -26,13 +26,14 @@ if($result->num_rows == 0){
     create table admin(
         id int  AUTO_INCREMENT PRIMARY KEY,
         username varchar(80) DEFAULT NULL,
-        password varchar(80) DEFAULT NULL
+        password varchar(80) DEFAULT NULL,
+        bank_account varchar(30) DEFAULT NULL
     );
     ";
     //fire create table code
     $dbconnection->query($create_table);
     $add_value="
-    INSERT INTO admin(username,password) values('admin','admin');";
+    INSERT INTO admin(username,password,bank_account) values('admin','admin','000801102560591');";
     $dbconnection->query($add_value);
 
     $dbconnection ->select_db($database);
@@ -49,14 +50,19 @@ if($result->num_rows == 0){
         email varchar(80) DEFAULT NULL,
         contact varchar(50) DEFAULT NULL,
         password char(40) DEFAULT NULL,
-        confirm_password char(40) DEFAULT NULL,
         issued_date date,
         gender char(10) DEFAULT NULL,
-        transactionid bigint(20) DEFAULT NULL
+        bankAcc bigint(20) DEFAULT NULL,
+        payment_date date DEFAULT NULL,
+        payment_details varchar(255) DEFAULT NULL,
+        status varchar(30) DEFAULT NULL,
+        amount varchar(40) DEFAULT NULL,
+        payment_method text DEFAULT NULL
     );";
-
-
-    $dbconnection->query($c_table);    
+    $dbconnection->query($c_table);
+    
+    // $e_insert="INSERT INTO employee(payment_details,status,amount) values('----','Pending','----');";
+    // $dbconnection->query($e_insert);
 }
 
 //if database exist or created select database

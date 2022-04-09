@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ForgotPassword</title>
     <link href="https://fonts.googleapis.com/css2?family=Crete+Round&family=Old+Standard+TT:wght@700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="../CSS/forgotpass.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
@@ -19,7 +20,7 @@
             <h2> -------Forgot Password-------</h2>
             <!--AN h2 text for labeling the Forgot Password-->
         </div>
-        <form method="post" action="../PHP/forpass.php" id="form" class="form">
+        <form method="post" action="#" id="form" class="form">
             <!--creating a form-->
             <div class="main-form">
                 <!--creating a div for the form naming it main-form-->
@@ -51,8 +52,51 @@
         <!-- <button onclick="window.location.href ='../HTML/changepassword.php';" type ="submit" class="submitBtn" name="submit" >Submit</button> -->
 
         <button onclick="window.location.href ='../HTML/main.php';" class="cancelBtn" name="Cancel" >Back</button>
+
+        <?php 
+        session_start();
+        include_once("../PHP/connection.php"); //connecting to the database 
+
+        if(isset($_POST['submit'])){
+        // if(!empty($_POST['employeeid']) && !empty($_POST['username']) && !empty($_POST['email'])){ //checking empty values        
+        $emp_id = $_POST['employeeid']; // defining a variable to store data from an HTML form.
+            
+        $user_name = $_POST['username']; // defining a variable to store data from an HTML form.
+        
+        $email = $_POST['email']; // defining a variable to store data from an HTML form.
+       
+        
+
+        //defining session variables
+        $_SESSION ['email'] =$email;
+        $_SESSION ['username'] =$user_name;
+        $_SESSION ['employeeid'] = $emp_id;
+
+        
+        $sql_query= "SELECT * FROM employee WHERE employee_id = '$emp_id' AND user_name ='$user_name' AND email ='$email'";   //matching user input values in database
+        $result = $dbconnection ->query($sql_query); //running command 
+
+        if ($result) {
+         if ($result ->num_rows >0) {
+        header("Location:../HTML/changepassword.php"); //rediceting to another page
+    
+        } else {            //displaying error alert message
+            echo'<script>
+                    Swal.fire({
+                        icon: "error",
+                        title: "Err...",
+                        text: "You provided wrong credentials!",
+                      })
+                    </script>';
+        // header("Location:../HTML/forgotpass.php");
+        }
+        } else {
+         echo 'Error: '.mysql_error();
+        } 
+
+        } 
+        ?>
     </div>
-<script src=""></script>
 </body>
 
 </html>
