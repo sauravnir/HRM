@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="../CSS/dashboard.css">
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     
@@ -21,10 +23,11 @@
                     </div>
                 </a> -->
                 
-                <div class="tab1"><img src="../assets/logout.png" alt="">
+                <div class="tab2"><img src="../assets/logout.png" alt="">
                     <button id="logout" onclick="logOut()">Logout</button>
                 </div>
 
+            
             <!-- <h2>Quinate Creations</h2> -->
 
             <!-- <div class="tabs">
@@ -44,14 +47,17 @@
                     <div class="prf-circle">
                         <img src="../assets/pp.png" alt="">
                     </div>
-                    <h6 class="prf-username">Employee</h6>
+                    <h6 class="prf-username"><?php 
+                    session_start();
+                    $u_name = $_SESSION['employee_name'] ;
+                    echo $u_name?></h6>
                 </div>
             </div>
             
             <div class="dashboard-content">
                 <!-- <h1>Dashboard</h1> -->
                 <br>
-                <h1>
+                <h1 style="text-align:center">
                 Employee Logged in Successfully!!! <br>  
                 In progress!!!
                 </h1>
@@ -60,5 +66,6 @@
         
     </div>
     <script src="../JS/dashboard.js"></script>
+    <script src="../JS/nav-bar.js"></script>
 </body>
 </html>

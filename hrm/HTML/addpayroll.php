@@ -1,6 +1,5 @@
 <?php include('../PHP/connection.php');  ?>
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +8,7 @@
     <title>Add Payroll</title>
     <link rel="stylesheet" href="../CSS/addpayroll.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
 </head>
 
 <body>
@@ -36,7 +36,7 @@
                       <h5>Employee Details</h5>
                     </div>
                   </a>
-                  <a href="">
+                  <a href="leave.php">
                     <div class="tab"><img src="../assets/leave.png" alt="">
                       <h5>Leave Request</h5>
                     </div>
@@ -78,8 +78,9 @@
             <br>
 
             <?php
-                $name = $_REQUEST["name"];
-                $bankacc = $_REQUEST['bankaccount'];
+                
+                $name = $_REQUEST["forename"];
+                $bankacc = $_REQUEST['bankacc'];
                 $contact = $_REQUEST['contact'];
                 $sql_query = "Select bank_account from admin";      //acessing from sql
                 $result = $dbconnection -> query($sql_query);
@@ -87,7 +88,7 @@
                 $admin_bank = $admin_data['bank_account'];
           ?>  
 
-              <form action="" method='post'>
+              <form action="../PHP/addingPayroll.php" method='post'>
               <div class="addpay-ctn">
                 <h2>Create Transaction</h2>
                 <hr>
@@ -100,7 +101,7 @@
                   <div class="input-ctn">
 
                     <label for="">Amount</label><br>
-                    <input name='amount' type="number" required>
+                    <input name='amount' type="number" placeholder="Rs." required>
                   </div>
                   <div class="input-ctn">
                     <label for="">Payment Date</label><br>
@@ -123,7 +124,7 @@
               
                   <div class="input-ctn">
                     <label for="">Payment Method</label><br>
-                    <input name='paymentMethod' value="Online" type="text" required>
+                    <input name='paymentMethod' value="" placeholder='Online/Cash' type="text" required >
                   </div>
                   <div class="input-ctn">
                     <label for="">Payment Detail</label><br>
@@ -139,7 +140,7 @@
                   </div>
                   <div class="input-ctn">
                     <label for="">Bank Account</label><br>
-                    <input type="text" value='<?= $bankacc?>'>
+                    <input name="bankacc" type="text" value='<?= $bankacc?>'>
                   </div>
                   <div class="input-ctn">
                     <label for="">Identifier/ Mobile Number</label><br>
@@ -148,39 +149,58 @@
                 </div>
                 <div class="input-row">
                   <div class="btn-ctn">
-                    
-               <input type="submit" class="table" name="makePayment" value="Make Payment" style="background-color:red; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;"><form>
+                    <input type='submit' class="table" name="makePayment" value="Make Payment" style="background-color:green; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;">
+                  <form>
                         
                     <!-- <form action="addpayroll.php" method='post'>
                     <input value="Make Payment" name="makePayment" type='button'> 
                     </form> -->
                    
                   <!-- <button onclick="payroll()"name="makePayment">Make Payment</button> -->
-        <button onclick='window.location.href="../HTML/dashboard.php"'>Cancel</button>                   
+                  <input class='btn' name='exit' value='Exit'
+                                    onclick="location.href='dashboard.php'"
+                                    style='background-color:red; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;size:50px'> 
+        <!-- <input  style="background-color:grey" class='table' type="button" value="Back" onclick="window.location.href='salary.php'">                   -->
                   </div>
                 </div> 
-                <?php
-              include('../PHP/connection.php');
-            if(isset($_POST['makePayment'])){
-              if(!empty($_POST['amount']) && !empty($_POST['paymentDate']) && !empty($_POST['paymentDetails']) && !empty($_POST['paymentMethod'])){
-                $amount =$_POST['amount'];
-                $pay_date =$_POST['paymentDate'];
-                $pay_details = $_POST['paymentDetails'];
-                $payment_method  = $_POST['paymentMethod'];
-                $bankacc = $_REQUEST['bankaccount'];
-                echo $bankacc;
-                echo $contact;
-                $contact = $_REQUEST['contact'];
-                $data_select = "SELECT amount,payment_date,payment_method,payment_details from employee WHERE bankAcc='$bankacc' and contact ='$contact'";
-                $result = $dbconnection->query($data_select);
-                var_dump($result);
-                $row = mysqli_fetch_array($result);
-                $update_data ="UPDATE employee SET amount='$amount' and payment_date='$pay_date' and payment_method ='$payment_method' and payment_details='$pay_details' and status ='Paid' ";
-                $result1=$dbconnection -> query($update_data);
-                
-              }   
-  }
 
+                  <?php
+      
+                      // if(isset($_POST['makePayment'])){
+  //                       if(!empty($_POST['amount']) && !empty($_POST['paymentDate']) && !empty($_POST['paymentDetails']) && !empty($_POST['paymentMethod'])){
+
+  //                         $amount =$_POST['amount'];
+  //                         $pay_date =$_POST['paymentDate'];
+  //                         $pay_details = $_POST['paymentDetails'];
+  //                         $payment_method  = $_POST['paymentMethod'];
+  //                         $bankacc = $_REQUEST['bankacc'];
+  //                         echo $bankacc;
+
+              
+  //                         $data_select = "SELECT amount,payment_date,payment_method,payment_details from employee WHERE bankAcc='$bankacc'";
+  //                         $result = $dbconnection->query($data_select);
+                      
+  //                         $row = mysqli_fetch_array($result);
+  //                         $update_data ="UPDATE employee SET amount='$amount'";
+  //                         $result1=$dbconnection -> query($update_data);
+  //                         $update_data1 ="UPDATE employee SET payment_date='$pay_date'";
+  //                         $result2=$dbconnection -> query($update_data1);
+  //                         $update_data2 ="UPDATE employee SET payment_method='$payment_method'";
+  //                         $result3=$dbconnection -> query($update_data2);
+  //                         $update_data3 ="UPDATE employee SET payment_details='$pay_details'";
+  //                         $result4=$dbconnection -> query($update_data3);
+  //                         $update_data4 ="UPDATE employee SET status='Paid'";
+  //                         $result5=$dbconnection -> query($update_data4);
+
+  //                         // echo'<script>
+  //                         // alert("You have successfully added payroll!!");
+  //                         // window.location.href="dashboard.php";
+  //                         // </script>';
+  //                         // header('Location:dashboard.php');
+  // }else{
+  // }
+  
+// }
 ?>
               </div>
         </div>

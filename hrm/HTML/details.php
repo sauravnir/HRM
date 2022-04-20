@@ -9,6 +9,7 @@
     <title>Details</title>
     <link rel="stylesheet" href="../CSS/dashboard.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
 </head>
 
 <body>
@@ -108,7 +109,16 @@ if($result->num_rows>0){
 
         $contact = $row['contact'];
        
-        //defining session variable
+        $gender =$row['gender'];
+        
+        $issued_date=$row['issued_date'];
+
+        $email=$row['email'];
+
+        $designation=$row['designation'];
+
+        $user_name=$row['user_name'];
+        // defining session variable
         // $_SESSION['employee_id'] =$employ_id;
         // $_SESSION['payment_date']=$pay_date;
         // $_SESSION['payment_details']=$pay_details;
@@ -132,8 +142,9 @@ if($result->num_rows>0){
                             <td> $name </td>"; ?>
                             <td><form method="post">
                             <!-- <input type="button" value="Details" class="table" style="background-color:#04AA6D;"><a style="color:white;" href="">EDIT ME </a> -->
-                            <input class="table" name="details" value="Details" onclick="location.href='salary.php?employID= <?php echo $employ_id; ?>&forename=<?php echo $name;?>&payDate=<?php echo $pay_date;?>&payDetails=<?php echo $pay_details;?>&status=<?php echo $status;?>&amount=<?php echo $amount;?>&bankacc=<?php echo $bank_acc;?>&contact=<?php echo $contact?>'" style="background-color:#04AA6D; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;">    
-                            <form method="post"><input type="submit" class="table" name="delete" value="Delete" style="background-color:red; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;"><form>
+                            <input class="table" name="details" value="Details" onclick="location.href='employeeInfo.php?employID= <?php echo $employ_id; ?>&forename=<?php echo $name;?>&payDate=<?php echo $pay_date;?>&payDetails=<?php echo $pay_details;?>&status=<?php echo $status;?>&amount=<?php echo $amount;?>&bankacc=<?php echo $bank_acc;?>&contact=<?php echo $contact?>&gender=<?php echo $gender?>&username=<?php echo $user_name?>&designation=<?php echo $designation?>&email=<?php echo $email?>&issued_date=<?php echo $issued_date?>&department=<?php echo $depart?>'" style="background-color:#04AA6D; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;">    
+                            <input class="table" name="details" value="Delete" onclick="location.href='../PHP/deleting.php?employID= <?php echo $employ_id; ?>'" style="background-color:red; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;">    
+                            <!-- <form method="post"><input type="submit" class="table" name="delete" value="Delete" style="background-color:red; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;"><form> -->
                         </form></td>
                             <?php
                                 // <td><form method="post">
@@ -157,25 +168,25 @@ if($result->num_rows>0){
                         // }
 
 
-                        if(isset($_POST['delete'])){
+                        // if(isset($_POST['delete'])){
     
-                            echo '<script>
-                            Swal.fire({
-                                title: "Are you sure?",
-                                text: "You wont be able to revert this!",
-                                icon: "warning",
-                                showCancelButton: true,
-                                confirmButtonColor: "#3085d6",
-                                cancelButtonColor: "#d33",
-                                confirmButtonText: "Yes, delete it!"
-                              }).then((result) => {
-                                if (result.isConfirmed) {
-                                window.location.href="../PHP/deleting.php";
-                                }
-                              })
-                            // </script>';
+                        //     echo '<script>
+                        //     Swal.fire({
+                        //         title: "Are you sure?",
+                        //         text: "You wont be able to revert this!",
+                        //         icon: "warning",
+                        //         showCancelButton: true,
+                        //         confirmButtonColor: "#3085d6",
+                        //         cancelButtonColor: "#d33",
+                        //         confirmButtonText: "Yes, delete it!"
+                        //       }).then((result) => {
+                        //         if (result.isConfirmed) {
+                        //         window.location.href="../PHP/deleting.php";
+                        //         }
+                        //       })
+                        //     // </script>';
                             
-                        }
+                        // }
 }
 }
 ?>

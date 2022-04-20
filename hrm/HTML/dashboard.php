@@ -8,6 +8,7 @@
     <title>Home</title>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../CSS/dashboard.css">
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
 </head>
 
 <body>
@@ -57,7 +58,7 @@
                         <img src="../assets/pp.png" alt="" onclick>
                     </div>
                     
-                    <h6 class="prf-username">Admin</h6>
+                    <button></button><h6 class="prf-username">Admin</h6>
                     
                 </div>
             </div>
@@ -74,7 +75,6 @@
                         alt="" class="pic">
                     <input type="image" onclick="imageClicker3()" src="https://image-charts.com/chart.js/2.8.0?bkg=white&icac=documentation&c=ewogIHR5cGU6ICdsaW5lJywKICBkYXRhOiB7CiAgICBsYWJlbHM6IFsnSmFudWFyeScsICdGZWJydWFyeScsICdNYXJjaCcsICdBcHJpbCcsICdNYXknLCAnSnVuZScsICdKdWx5J10sCiAgICBkYXRhc2V0czogWwogICAgICB7CiAgICAgICAgbGFiZWw6ICdkYXRhc2V0IC0gYmlnIHBvaW50cycsCiAgICAgICAgZGF0YTogWy0xNSwgLTgwLCA3OSwgLTExLCAtNSwgMzMsIC01N10sCiAgICAgICAgYmFja2dyb3VuZENvbG9yOiAncmdiKDI1NSwgOTksIDEzMiknLAogICAgICAgIGJvcmRlckNvbG9yOiAncmdiKDI1NSwgOTksIDEzMiknLAogICAgICAgIGZpbGw6IGZhbHNlLAogICAgICAgIGJvcmRlckRhc2g6IFs1LCA1XSwKICAgICAgICBwb2ludFJhZGl1czogMTUsCiAgICAgICAgcG9pbnRIb3ZlclJhZGl1czogMTAsCiAgICAgIH0sCiAgICAgIHsKICAgICAgICBsYWJlbDogJ2RhdGFzZXQgLSBpbmRpdmlkdWFsIHBvaW50IHNpemVzJywKICAgICAgICBkYXRhOiBbLTg2LCA1OSwgLTcwLCAtNDAsIDQwLCAzMywgMTZdLAogICAgICAgIGJhY2tncm91bmRDb2xvcjogJ3JnYig1NCwgMTYyLCAyMzUpJywKICAgICAgICBib3JkZXJDb2xvcjogJ3JnYig1NCwgMTYyLCAyMzUpJywKICAgICAgICBmaWxsOiBmYWxzZSwKICAgICAgICBib3JkZXJEYXNoOiBbNSwgNV0sCiAgICAgICAgcG9pbnRSYWRpdXM6IFsyLCA0LCA2LCAxOCwgMCwgMTIsIDIwXSwKICAgICAgfSwKICAgICAgewogICAgICAgIGxhYmVsOiAnZGF0YXNldCAtIGxhcmdlIHBvaW50SG92ZXJSYWRpdXMnLAogICAgICAgIGRhdGE6IFs1OSwgLTY1LCAtMzMsIDAsIC03OSwgOTUsIC01M10sCiAgICAgICAgYmFja2dyb3VuZENvbG9yOiAncmdiKDc1LCAxOTIsIDE5MiknLAogICAgICAgIGJvcmRlckNvbG9yOiAncmdiKDc1LCAxOTIsIDE5MiknLAogICAgICAgIGZpbGw6IGZhbHNlLAogICAgICAgIHBvaW50SG92ZXJSYWRpdXM6IDMwLAogICAgICB9LAogICAgICB7CiAgICAgICAgbGFiZWw6ICdkYXRhc2V0IC0gbGFyZ2UgcG9pbnRIaXRSYWRpdXMnLAogICAgICAgIGRhdGE6IFs3MywgODMsIC0xOSwgNzQsIDE2LCAtMTIsIDhdLAogICAgICAgIGJhY2tncm91bmRDb2xvcjogJ3JnYigyNTUsIDIwNSwgODYpJywKICAgICAgICBib3JkZXJDb2xvcjogJ3JnYigyNTUsIDIwNSwgODYpJywKICAgICAgICBmaWxsOiBmYWxzZSwKICAgICAgICBwb2ludEhpdFJhZGl1czogMjAsCiAgICAgIH0sCiAgICBdLAogIH0sCiAgb3B0aW9uczogewogICAgbGVnZW5kOiB7CiAgICAgIHBvc2l0aW9uOiAnYm90dG9tJywKICAgIH0sCiAgICB0aXRsZTogewogICAgICBkaXNwbGF5OiB0cnVlLAogICAgICB0ZXh0OiAnQ2hhcnQuanMgTGluZSBDaGFydCAtIERpZmZlcmVudCBwb2ludCBzaXplcycsCiAgICB9LAogIH0sCn0K&encoding=base64&ichm=9041bf0051dc7b81bc04dea555e860f6e13bfe22b8aa08cb440ec05eb43dea00"
                         alt="" class="pic"> 
-
                 </div>
 
             </div>

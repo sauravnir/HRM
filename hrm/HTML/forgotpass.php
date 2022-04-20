@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Crete+Round&family=Old+Standard+TT:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/forgotpass.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
 
 </head>
 

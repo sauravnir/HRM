@@ -3,13 +3,10 @@ session_start();
 include_once("connection.php");
 
 //fetching the variables from details.php
-$s_num=$_SESSION['id'];
-$depart=$_SESSION['department'];
-$l_name=$_SESSION['last_name'];
-$f_name =$_SESSION['first_name'];
+$empID = $_REQUEST['employID'];
 
 //deleting records from table 
-$data_del = "DELETE from employee WHERE first_name= '$f_name' AND last_name='$l_name'";
+$data_del = "DELETE from employee WHERE employee_id = '$empID'";
 $result1= $dbconnection -> query($data_del);
 header("Location:../HTML/details.php");
 ?>

@@ -10,6 +10,7 @@
     <title>Leave</title>
     <link rel="stylesheet" href="../CSS/dashboard.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
     
 </head>
 

@@ -7,6 +7,7 @@
     <title>Change Password</title>
     <link rel="stylesheet" href="../CSS/forgotpass.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
 
 </head>
 <body>
@@ -40,6 +41,7 @@
         //creating a new password and change password variable
         $new_pass = $_POST['newpassword'];
         $change_pass =$_POST['changepassword'];
+        // $enc_password = md5($new_pass);
         
         //selecting particular data from the database 
         $db_select = "SELECT password from employee where employee_id='$emp_id' and user_name='$user_name' and email='$email'";
@@ -48,7 +50,7 @@
         $row = mysqli_fetch_array($result);
         if($new_pass == $change_pass){
             //updating data 
-            $change_data = "UPDATE employee set password='$new_pass'";
+            $change_data = "UPDATE employee set password='$new_pass' WHERE user_name ='$user_name'";
             $result1 = $dbconnection ->query($change_data); 
             echo'<script>
             alert("Changed password successfully!!")
@@ -63,7 +65,6 @@
             </script>';
         }
         }
-        session_destroy();
         ?>
     </div>
     

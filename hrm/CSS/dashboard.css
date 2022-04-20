@@ -75,7 +75,7 @@
   align-items: center;
   width: 100%;
   height: 50px;
-  margin-top:550px;
+  margin-top:400px;
 }
 
 #logout{
@@ -90,14 +90,35 @@
   opacity: 1;
 }
 
+.tab2 {
+  display:flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  margin-top:800px;
+}
+
+#logout{
+  background-color: #FF0000;
+  width: 100px;
+}
+
+.tab2 img{
+  width: 20px;
+  height: 25px;
+  margin-right: 20px;
+  opacity: 1;
+}
 .active{
             background-color: rgb(218, 1, 84);
             padding-left: 10px;
-            /* color: #000;}
+}
+   
+
 .tab:hover {
-  background-color: rgb(82, 2, 32);
+  /* background-color: rgb(82, 2, 32); */
   padding-left: 10px;
-  /* color: #000; */
+  color: #000; 
 }
 
 .tab img {
@@ -677,7 +698,7 @@ a:nth-child(3) img {
   opacity: 1;
   padding: 12px;
   vertical-align: top;
-  border: 1px solid #389ecd;
+  border: 1px solid #000000;
   font-family: "Poppins";
 }
 
@@ -691,6 +712,42 @@ a:nth-child(3) img {
   border: 1px solid #565656;
   font-weight: bolder;
 }
+.table1 {
+  width: 100%;
+  font-size: 20px;
+}
+
+.table1 thead {
+  background-color: #ffffff;
+}
+
+.table1 td:hover{
+  background-color: rgb(110, 107, 107);
+}
+
+.table1 thead tr th {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.35px;
+  color: #000000;
+  opacity: 1;
+  padding: 12px;
+  vertical-align: top;
+  border: 1px solid #000000;
+  font-family: "Poppins";
+}
+
+.table1 tbody tr td {
+  font-size: 20px;
+  letter-spacing: 0.35px;
+  color: rgb(0, 0, 0);
+  background-color: rgb(232, 232, 232);
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #565656;
+  font-weight: bolder;
+}
+
 
 /* .table tbody tr td .btn {
   /* text-decoration: none; */
