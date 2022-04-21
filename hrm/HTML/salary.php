@@ -60,6 +60,18 @@
             <div class="dashboard-content">
                 <h1 class="ContentTitle">Employee Details</h1><br><br>
             </div>
+            <style>
+                @media print{
+                    body *{
+                        visibility:hidden;
+                    }
+                    .table-container, .table-container *{
+                        visibility:visible;
+                    }
+                }
+            </style>
+
+        
             <div class="table-container">
                 <h1 class="heading">Salary Sheet </h1>
                 <table class="table">
@@ -76,8 +88,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <button id='print' onclick="printT()">Print</button>
-
+                        <button id='print' onclick="window.print()">Print</button>
                         <?php
                     session_start();
 

@@ -17,23 +17,23 @@ document.getElementById("toggle").addEventListener("click", function () {
 })
 
 
-//for logout button 
-function logOut() {
-    Swal.fire({
-        title: "Are you sure?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Log Out"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire(
-                window.location.href = "../HTML/main.php"
-            )
-        }
-    })
-}
+// //for logout button 
+// function logOut() {
+//     Swal.fire({
+//         title: "Are you sure?",
+//         icon: "warning",
+//         showCancelButton: true,
+//         confirmButtonColor: "#3085d6",
+//         cancelButtonColor: "#d33",
+//         confirmButtonText: "Log Out"
+//     }).then((result) => {
+//         if (result.isConfirmed) {
+//             Swal.fire(
+//                 window.location.href = "../HTML/main.php"
+//             )
+//         }
+//     })
+// }
 
 
 
@@ -83,11 +83,7 @@ function deleteThis() {
     })
   }
 
-
-function printT(){
-    window.print()
-}
-
+//adding payroll
 function payroll(){
     Swal.fire({
         title: "Are you sure?",
@@ -120,5 +116,5 @@ function exit(){
                 window.location.href = "../PHP/dashboard.php"
             )
         }
-    })
+    });
 }
