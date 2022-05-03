@@ -1,0 +1,40 @@
+table {
+    width: 80%;
+    text-align: left;
+    position: relative;
+    border-collapse: collapse; 
+    background-color: #f6f6f6;
+  }/* Spacing */
+  td, th {
+    border: 1px solid #999;
+    padding: 20px;
+  }
+  th {
+    background: rgb(37, 37, 37);
+    color: white;
+    border-radius: 0;
+    position: sticky;
+    top: 0;
+    padding: 10px;
+  }
+  .primary{
+    background-color: #000000
+  }
+  
+  tfoot > tr  {
+    background: black;
+    color: white;
+  }
+  .btn-container{
+    display: flex;
+    justify-content: flex-end;
+    width: 80%;
+    height:45px; 
+    margin-bottom: 30px;
+  }
+  .btn-container button{
+    border: 0;
+    padding: 10px 30px;
+    /* background-color: red; */
+    color: rgb(51, 51, 51);
+}
