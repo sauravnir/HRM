@@ -57,7 +57,34 @@
                     <div class="prf-circle">
                         <img src="../assets/pp.png" alt="">
                     </div>
-                    <h6 class="prf-username">Admin</h6>
+                    <div class="dropdown">
+                        <button class="dropbtn" >Admin</button>
+                        <!-- <h6 class="prf-username">Admin</h6> -->
+                        <div  id="myDropdown" class="dropdown-content">
+                        <!-- <button id="logout" onclick="logOut()">Logout</button> -->
+                        </div>
+                    </div>
+
+                    <!-- Styling for User drop down -->
+                    <style>
+
+                        .prf-container{
+                            margin-right:40px;
+                        }
+                        .dropbtn {
+  /* background-color: #FFFFFF; */
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+                    </style>
                 </div>
             </div>
 
@@ -69,6 +96,7 @@
                 <table class="table">
                     <thead>
                     <tr class="columns">
+                    <th name="employeeid">Date</th>
                             <th name="employeeid">Employee I.D</th>
                             <th name="department">Department</th>
                             <th name="name">Names</th>
@@ -82,32 +110,40 @@
                         <?php 
 
 
-$db_select ="SELECT employee_id,first_name,last_name,department from employee";
+$db_select ="SELECT * from leaverequest";
 $result = $dbconnection -> query($db_select);
 
 if($result->num_rows>0){
     while ($row = $result->fetch_assoc()){
+        $leave_date = $row['leave_date'];
         $emp_id = $row['employee_id'];
         $depart = $row['department'];
-        $name = $row['first_name']." ".$row['last_name'];;
-         
+        $name = $row['employee_name'];
+        $leave_type = $row['leave_type'];
+        $reason = $row['reason'];
+        $user_name = $row['user_name'];
+        $status = $row['status'];
         // This section is still in progress!!!
         echo "
         <tr>
+        <td> $leave_date</td>
                             <td> $emp_id </td>
                             <td> $depart</td>
                             <td> $name </td>
-                            <td> Pending </td>
-                            <td><form method='post' action='#'><input type='submit' class='table' name='open' value='Open' style='background-color:#04AA6D'></form></td>
-                        </tr>";
+                            <td> $status </td>";?>
+                            <td><form method="post">
+                            <!-- <input type="button" value="Details" class="table" style="background-color:#04AA6D;"><a style="color:white;" href="">EDIT ME </a> -->
+                            <input class="table" name="details" value="Details" onclick="location.href='adminleavereq.php?employid=<?php echo $emp_id; ?>&employee_name=<?php echo $name;?>&leavedate=<?php echo $leave_date;?>&department=<?php echo $depart;?>&status=<?php echo $status;?>&username=<?php echo $user_name;?>&reason=<?php echo $reason;?>&leavetype=<?php echo $leave_type?>'" style="background-color:#04AA6D; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;">    
+                            <!-- <form method="post"><input type="submit" class="table" name="delete" value="Delete" style="background-color:red; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;"><form> -->
+                        </form></td>
+                            <?php
+                                // <td><form method="post">
+                                // <a href="salary.php?ida=echo '$s_num'">
+                                // </form>
+                                // <form method="post"><input type="submit" class="table" name="delete" value="Delete" style="background-color:red"><form></td>
+                            echo '</tr>';
     }
-    
-    if(isset($_POST['open'])){
-        echo'<script> Swal.fire({
-            icon: "warning",
-            title: "Work in progress",
-          })</script>';
-    }
+            
 }
 ?>
                     </tbody>

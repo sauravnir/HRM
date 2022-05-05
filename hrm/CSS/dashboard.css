@@ -75,12 +75,13 @@
   align-items: center;
   width: 100%;
   height: 50px;
-  margin-top:550px;
+  margin-top:400px;
 }
 
 #logout{
   background-color: #FF0000;
   width: 100px;
+  font-size: 20px;
 }
 
 .tab1 img{
@@ -90,14 +91,33 @@
   opacity: 1;
 }
 
+.tab2 {
+  display:flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  margin-top:800px;
+}
+
+.tab2 img{
+  width: 20px;
+  height: 25px;
+  margin-right: 20px;
+  opacity: 1;
+}
 .active{
             background-color: rgb(218, 1, 84);
             padding-left: 10px;
-            /* color: #000;}
-.tab:hover {
-  background-color: rgb(82, 2, 32);
+}
+   
+.active1{
+  background-color: rgb(83, 3, 19);
   padding-left: 10px;
-  /* color: #000; */
+}
+a:hover {
+  /* background-color: rgb(82, 2, 32); */
+  padding-left: 10px;
+  color: #000; 
 }
 
 .tab img {
@@ -111,10 +131,8 @@
   font-family: "Poppins";
   font-weight: 300;
 }
-
-a:last-child {
-  position: absolute;
-  bottom: 0;
+a:nth-child(4):hover{
+  padding-left: 0;
 }
 
 a:nth-child(2) img {
@@ -193,8 +211,12 @@ a:nth-child(3) img {
   padding: 10px;
   margin-top: 20px;
   /* background-color: yellow; */
+  
 }
 
+.dashboard-content1{
+  margin-left:200px;
+}
 .ContentTitle {
   font-family: "Poppins";
   /* text-align: center; */
@@ -746,11 +768,22 @@ a:nth-child(3) img {
 
 
 #print{
-  float: right;
+  
   font-size: 20px;
 }
 
 #back{
   float:left;
   font-size:20px;
+}
+
+#dropdown-parent{
+  position: relative;
+}
+.dropdown-wrapper{
+  display: none;
+  width: 215px;
+  padding-left: 40px;
+  
+  /* background-color: red; */
 }

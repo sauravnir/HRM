@@ -35,20 +35,23 @@
                     <input class="btn solid" type="submit" value="Login" name="login1"/>
                 </form>
 
-               
 
-                
                 <?php 
                 //for employee login
+                session_start();
                 if(isset($_POST['login1'])){   
                 $u_name = $_POST["employee_name"];     //defining a variable   
                 $pass = $_POST["employee_pass"];   //defining a variable 
-    
+                
+                $_SESSION ["employee_name"]=$u_name;
+
+                
                 $sql_query = "select * from employee where user_name = '$u_name' and password = '$pass'";      //acessing from sql
                 $result = $dbconnection -> query($sql_query);
                 if ($row = $result -> fetch_assoc()) {
                 header('Location: employeedashboard.php');
                 } else {
+                    $_SESSION ["employee_name"]=$u_name;
                     echo'<script>
                     Swal.fire({
                         icon: "error",
@@ -107,7 +110,7 @@
             <div class="panel left-panel">
                 <div class="content">
                     <!-- <h3>Click below for admin login!</h3> -->
-                    <button class="btn transparent" id="sign-up-btn">Admin Login</button>
+                    <button  class="btn transparent" id="sign-up-btn">Admin Login</button>
                 </div>
 
                 <img src="../assets/employee.png" class="image" alt="" />

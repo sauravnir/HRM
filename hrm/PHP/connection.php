@@ -52,19 +52,45 @@ if($result->num_rows == 0){
         password char(40) DEFAULT NULL,
         issued_date date,
         gender char(10) DEFAULT NULL,
-        bankAcc bigint(20) DEFAULT NULL,
-        payment_date date DEFAULT NULL,
-        payment_details varchar(255) DEFAULT NULL,
-        status varchar(30) DEFAULT NULL,
-        amount varchar(40) DEFAULT NULL,
-        payment_method text DEFAULT NULL
+        bankAcc bigint(20) DEFAULT NULL
     );";
     $dbconnection->query($c_table);
-    
+
+    $salary_table = "
+    create table salary(
+        id int AUTO_INCREMENT PRIMARY KEY,
+        employee_id mediumint(9) DEFAULT NULL,
+        employee_name varchar(80) DEFAULT NULL,
+        payment_date date DEFAULT NULL,
+        bankAcc bigint(20) DEFAULT NULL,
+        status varchar(30) DEFAULT NULL,
+        amount varchar(40) DEFAULT NULL,
+        payment_details varchar(255) DEFAULT NULL,
+        contact varchar(50) DEFAULT NULL,
+        payment_method text DEFAULT NULL,
+        user_name varchar(80) DEFAULT NULL
+    );";
+    $dbconnection -> query($salary_table);
+
+    $leavereq= "
+    create table leaverequest(
+        id int AUTO_INCREMENT PRIMARY KEY,
+        employee_id mediumint(9) DEFAULT NULL,
+        leave_type varchar(30) DEFAULT NULL,
+        employee_name varchar(80) DEFAULT NULL,
+        reason text DEFAULT NULL,
+        remarks text DEFAULT NULL,
+        department varchar(100) DEFAULT NULL,
+        leave_date date DEFAULT NULL,
+        status varchar(30) DEFAULT NULL,
+        user_name varchar(80) DEFAULT NULL
+    );
+    ";
+    $dbconnection->query($leavereq);
     // $e_insert="INSERT INTO employee(payment_details,status,amount) values('----','Pending','----');";
     // $dbconnection->query($e_insert);
 }
-
+    
 //if database exist or created select database
 $dbconnection->select_db("hrm");
 

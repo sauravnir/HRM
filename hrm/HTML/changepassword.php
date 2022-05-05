@@ -41,6 +41,7 @@
         //creating a new password and change password variable
         $new_pass = $_POST['newpassword'];
         $change_pass =$_POST['changepassword'];
+        // $enc_password = md5($new_pass);
         
         //selecting particular data from the database 
         $db_select = "SELECT password from employee where employee_id='$emp_id' and user_name='$user_name' and email='$email'";
