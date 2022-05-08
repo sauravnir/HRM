@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if(empty($_SESSION['adminLoggedIn']) || $_SESSION['adminLoggedIn'] == ''){
+    header("Location: main.php");
+    die();
+}
+?>
 <?php include_once("../PHP/connection.php") ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +62,34 @@
                     <div class="prf-circle">
                         <img src="../assets/pp.png" alt="">
                     </div>
-                    <h6 class="prf-username">Admin</h6>
+                    <div class="dropdown">
+                        <button class="dropbtn" >Admin</button>
+                        <!-- <h6 class="prf-username">Admin</h6> -->
+                        <div  id="myDropdown" class="dropdown-content">
+                        <!-- <button id="logout" onclick="logOut()">Logout</button> -->
+                        </div>
+                    </div>
+
+                    <!-- Styling for User drop down -->
+                    <style>
+
+                        .prf-container{
+                            margin-right:40px;
+                        }
+                        .dropbtn {
+                            /* background-color: #FFFFFF; */
+                            color: black;
+                            padding: 16px;
+                            font-size: 16px;
+                            border: none;
+                            cursor: pointer;
+                            }
+
+                            .dropdown {
+                            position: relative;
+                            display: inline-block;
+                            }
+                    </style>
                 </div>
             </div>
 
@@ -153,14 +187,14 @@
 
                 </table>
                 <?php
+
                     $bank_acc = $_REQUEST['bankacc'];
-                    $paym_date=$_REQUEST['payDate'];
-                    $paym_details =$_REQUEST['payDetails'];
-                    $status = $_REQUEST["status"];
-                    $amount = $_REQUEST["amount"];
                     $contact = $_REQUEST['contact'];
+                
+    
+
                 ?>
-                <input class="table1" type="button" name="details" s value="Salary Sheet" onclick="location.href='salary.php?employee=<?php echo $empid?>&forename=<?php echo $fullname?>&payDate=<?php echo $paym_date ?>&payDetails=<?php echo $paym_details?>&bankacc=<?php echo $bank_acc?>&status=<?php echo $status?>&amount=<?php echo $amount?>&contact=<?php echo $contact?>'" style="background-color:#04AA6D; text-align:center; width:200px;color:white; padding:5px; cursor:pointer;">    
+                <input class="table1" type="button" name="details" value="Salary Sheet" onclick="location.href='salary.php?employee=<?php echo $empid?>&forename=<?php echo $fullname?>&bankacc=<?php echo $bank_acc?>&contact=<?php echo $contact?>'" style="background-color:#04AA6D; text-align:center; width:200px;color:white; padding:5px; cursor:pointer;">    
             </div>  
         </div>
 

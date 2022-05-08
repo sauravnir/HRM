@@ -21,4 +21,4 @@
         <a href="../HTML/main.php"><button class="btn"><span>Get Started!</span></button></a>
     </div>
 </body>
-</html>
+</html> 

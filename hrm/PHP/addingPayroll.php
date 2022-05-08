@@ -1,36 +1,25 @@
 <?php
+
 session_start();
+
 include_once("../PHP/connection.php");
 
-// if(!empty($_POST['amount']) && !empty($_POST['paymentDate']) && !empty($_POST['paymentDetails']) && !empty($_POST['paymentMethod'])){
 
     $amount =$_POST['amount'];
+    $final_amount='Rs'.' '.$amount;
     $pay_date =$_POST['paymentDate'];
     $pay_details = $_POST['paymentDetails'];
     $payment_method  = $_POST['paymentMethod'];
     $bankacc = $_POST['bankacc'];
+    $employ_id = $_POST['employee_id'];
+    $employ_name = $_POST['employee_name'];
+    $contacts = $_POST['contact'];
+    $user_name = $_POST['user_name'];
 
 
-    $data_select = "SELECT amount,payment_date,payment_method,payment_details from employee WHERE bankAcc='$bankacc'";
-    $result = $dbconnection->query($data_select);
-
-    $row = mysqli_fetch_array($result);
-    $update_data ="UPDATE employee SET amount='$amount' WHERE bankAcc='$bankacc'";
-    $result1=$dbconnection -> query($update_data);
-    $update_data1 ="UPDATE employee SET payment_date='$pay_date' WHERE bankAcc='$bankacc'";
-    $result2=$dbconnection -> query($update_data1);
-    $update_data2 ="UPDATE employee SET payment_method='$payment_method' WHERE bankAcc='$bankacc'";
-    $result3=$dbconnection -> query($update_data2);
-    $update_data3 ="UPDATE employee SET payment_details='$pay_details' WHERE bankAcc='$bankacc'";
-    $result4=$dbconnection -> query($update_data3);
-    $update_data4 ="UPDATE employee SET status='Paid' WHERE bankAcc='$bankacc'";
-    $result5=$dbconnection -> query($update_data4);
-
-    // echo'<script>
-    // alert("You have successfully added payroll!!");
-    // window.location.href="../HTML/dashboard.php";
-    // </script>';
+    $sql_insert1 = "INSERT INTO salary(`bankAcc`,`employee_id`,`employee_name`,`contact`,`payment_date`,`status`,`amount`,`payment_details`,`payment_method`,`user_name`) 
+    values('$bankacc','$employ_id','$employ_name','$contacts','$pay_date','Paid','$final_amount','$pay_details','$payment_method','$user_name')";
+    $result2 =$dbconnection -> query($sql_insert1);
     header('Location:../HTML/dashboard.php');
-// }else{
-// }
+
 ?>

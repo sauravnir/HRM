@@ -1,5 +1,4 @@
 <?php include('../PHP/connection.php');  ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,9 +34,7 @@
                     <input class="btn solid" type="submit" value="Login" name="login1"/>
                 </form>
 
-               
 
-                
                 <?php 
                 //for employee login
                 session_start();
@@ -51,6 +48,7 @@
                 $sql_query = "select * from employee where user_name = '$u_name' and password = '$pass'";      //acessing from sql
                 $result = $dbconnection -> query($sql_query);
                 if ($row = $result -> fetch_assoc()) {
+                    // $_SESSION['employeeLoggedIn'] = "LoggedIn";
                 header('Location: employeedashboard.php');
                 } else {
                     $_SESSION ["employee_name"]=$u_name;
@@ -92,6 +90,7 @@
                 $sql_query = "select * from admin where username = '$u_name' and password = '$pass'";
                 $result = $dbconnection -> query($sql_query);
                 if ($row = $result -> fetch_assoc()) {
+                    $_SESSION['adminLoggedIn'] = "Loggedin";
                 header('Location: dashboard.php');
                 } else {
                     echo'<script>

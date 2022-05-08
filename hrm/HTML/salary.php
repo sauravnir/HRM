@@ -1,3 +1,11 @@
+<?php 
+session_start();
+if(empty($_SESSION['adminLoggedIn']) || $_SESSION['adminLoggedIn'] == ''){
+    header("Location: main.php");
+    die();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,13 +61,52 @@
                     <div class="prf-circle">
                         <img src="../assets/pp.png" alt="">
                     </div>
-                    <h6 class="prf-username">Admin</h6>
+                    <div class="dropdown">
+                        <button class="dropbtn" >Admin</button>
+                        <!-- <h6 class="prf-username">Admin</h6> -->
+                        <div  id="myDropdown" class="dropdown-content">
+                        <!-- <button id="logout" onclick="logOut()">Logout</button> -->
+                        </div>
+                    </div>
+
+                    <!-- Styling for User drop down -->
+                    <style>
+
+                        .prf-container{
+                            margin-right:40px;
+                        }
+                        .dropbtn {
+  /* background-color: #FFFFFF; */
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+                    </style>
                 </div>
             </div>
 
             <div class="dashboard-content">
                 <h1 class="ContentTitle">Employee Details</h1><br><br>
             </div>
+            <style>
+                @media print{
+                    body *{
+                        visibility:hidden;
+                    }
+                    .table-container, .table-container *{
+                        visibility:visible;
+                    }
+                }
+            </style>
+
+        
             <div class="table-container">
                 <h1 class="heading">Salary Sheet </h1>
                 <table class="table">
@@ -69,39 +116,59 @@
                             <th>Name</th>
                             <th>Payment Date</th>
                             <th>Payment Details</th>
+                            <th>Payment Method</th>
                             <th>Bank Account</th>
                             <th>Status</th>
                             <th>Amount</th>
-                            <th>Actions</th>
+                            <!-- <th>Actions</th> -->
                         </tr>
                     </thead>
                     <tbody>
-                        <button id='print' onclick="printT()">Print</button>
-
+                    
+                        <button id='print' onclick="window.print()">Print</button>
                         <?php
-                    session_start();
-
-                        $employid = $_REQUEST['employee'];
-                        $name = $_REQUEST["forename"];
-                        $paym_date = $_REQUEST['payDate'];
-                        $paym_details = $_REQUEST["payDetails"];
-                        $status = $_REQUEST["status"];
-                        $amount = $_REQUEST["amount"];
-                        $bank_acc = $_REQUEST["bankacc"];
-                        $contact = $_REQUEST['contact'];
+                        // session_start();
+                        include ("../PHP/connection.php");
                         
-                    echo "<tr>
-                    <td data-label='Employee Id'>$employid</td>
-                    <td data-label='Name'>$name</td>
-                    <td data-label=Payment Date'>$paym_date</td>
-                    <td data-label='Payment Details'>$paym_details</td>
-                    <td data-label='Bank Account'>$bank_acc</td>
-                    <td data-label='Status'><span class='text_open'> $status </span></td>
-                    <td data-label='Amount'>$amount</td>";?>
+                        $employid = $_REQUEST['employee'];
+                        // echo $employid;
+                        $db_select ="SELECT * from salary where employee_id = '$employid'";
+                        $result = $dbconnection -> query($db_select);
+                        if($result->num_rows>0){
+                            while ($row = $result->fetch_assoc()){
+
+                                $employid = $row['employee_id'];
+                                $name = $row['employee_name'];
+                                $bank_acc = $row['bankAcc'];
+                                $paym_date = $row['payment_date'];
+                                // $paym_date = $_REQUEST['payDate'];
+                                $paym_details = $row["payment_details"];
+                                $status = $row["status"];
+                                $amount = $row["amount"];
+                                // $bank_acc = $row['bankAcc'];
+                                $contact = $row['contact'];
+                                $paym_method = $row['payment_method'];
+                                $user_name = $row['user_name'];
+                                // echo $user_name;
+                                
+                        // echo $paym_method;
+
+                                echo "<tr>
+                                <td data-label='Employee Id'>$employid</td>
+                                <td data-label='Name'>$name</td>
+                                <td data-label=Payment Date'>$paym_date</td>
+                                <td data-label='Payment Details'>$paym_details</td>
+                                <td data-label='Payment Details'>$paym_method</td>
+                                <td data-label='Bank Account'>$bank_acc</td>
+                                <td data-label='Status'><span class='text_open'> $status </span></td>
+                                <td data-label='Amount'>$amount</td>";
+                            }
+                        }
+                    ?>
                         <td>
                             <form method='post'>
                                 <input class='btn' name='delete' value='Add Payroll'
-                                    onclick="location.href='addpayroll.php?forename=<?php echo $name?>&bankacc=<?php  echo $bank_acc?>&contact=<?php echo $contact?>'" style='background-color:green; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;size:50px'>
+                                    onclick="location.href='addpayroll.php?&emplyID=<?php echo $employid?>&forename=<?php echo $name?>&bankacc=<?php  echo $bank_acc?>&contact=<?php echo $contact?>&username=<?php echo $user_name?>'" style='background-color:green; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;size:50px'>
                                 <form>
                         </td>
                         <?php echo"</tr>"; ?>

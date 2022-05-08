@@ -1,4 +1,11 @@
 <?php include_once("../PHP/connection.php") ?>
+<?php 
+session_start();
+if(empty($_SESSION['adminLoggedIn']) || $_SESSION['adminLoggedIn'] == ''){
+    header("Location: main.php");
+    die();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,8 +49,9 @@
                         <h5>Leave Request</h5>
                     </div>
                 </a>
-                
-                <div class="tab1">                    <!-- <button id="logout" onclick="logOut()">Logout</button> -->
+
+                <div class="tab1">
+                    
                 </div>
 
             </div>
@@ -55,7 +63,35 @@
                     <div class="prf-circle">
                         <img src="../assets/pp.png" alt="">
                     </div>
-                    <h6 class="prf-username">Admin</h6>
+                    <div class="dropdown">
+                        <button class="dropbtn" >Admin</button>
+                        <!-- <h6 class="prf-username">Admin</h6> -->
+                        <div  id="myDropdown" class="dropdown-content">
+                        <!-- <button id="logout" onclick="logOut()">Logout</button> -->
+                        </div>
+                    </div>
+
+                    <!-- Styling for User drop down -->
+                    <style>
+
+                        .prf-container{
+                            margin-right:40px;
+                        }
+                        .dropbtn {
+  /* background-color: #FFFFFF; */
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+                    </style>
+                   
                 </div>
             </div>
 
@@ -67,7 +103,7 @@
                 <table class="table">
                     <thead>
                         <tr class="columns">
-                            <th name="i.d.">S.N.</th>
+                            <th name="i.d.">S.N</th>
                             <th name="department">Department</th>
                             <th name="name">Names</th>
                             <th name="info">Information</th>
@@ -76,13 +112,12 @@
                     <tbody>
 
                         <?php 
-                session_start();
+                
 
-        // $test = $_SESSION['id'];
-        // $db_select ="SELECT id,first_name,last_name,department from employee";
         $db_select ="SELECT * from employee";
         $result = $dbconnection -> query($db_select);
 
+        
 if($result->num_rows>0){
     while ($row = $result->fetch_assoc()){
         $s_num = $row['id'];
@@ -97,14 +132,6 @@ if($result->num_rows>0){
 
         $employ_id = $row['employee_id'];
 
-        $pay_date = $row['payment_date'];
-
-        $pay_details=$row['payment_details'];
-
-        $status = $row['status'];
-
-        $amount = $row['amount'];
-
         $bank_acc=$row['bankAcc'];  
 
         $contact = $row['contact'];
@@ -118,15 +145,7 @@ if($result->num_rows>0){
         $designation=$row['designation'];
 
         $user_name=$row['user_name'];
-        // defining session variable
-        // $_SESSION['employee_id'] =$employ_id;
-        // $_SESSION['payment_date']=$pay_date;
-        // $_SESSION['payment_details']=$pay_details;
-        // $_SESSION['status']=$status;
-        // $_SESSION['amount']=$amount;
-        // $_SESSION['bankAcc'] =$bank_acc;
-
-
+        
         // Defining session variables
         $_SESSION['id']=$s_num;
         $_SESSION['department']=$depart;  
@@ -140,53 +159,21 @@ if($result->num_rows>0){
                             <td> $s_num </td>
                             <td> $depart</td>
                             <td> $name </td>"; ?>
-                            <td><form method="post">
-                            <!-- <input type="button" value="Details" class="table" style="background-color:#04AA6D;"><a style="color:white;" href="">EDIT ME </a> -->
-                            <input class="table" name="details" value="Details" onclick="location.href='employeeInfo.php?employID= <?php echo $employ_id; ?>&forename=<?php echo $name;?>&payDate=<?php echo $pay_date;?>&payDetails=<?php echo $pay_details;?>&status=<?php echo $status;?>&amount=<?php echo $amount;?>&bankacc=<?php echo $bank_acc;?>&contact=<?php echo $contact?>&gender=<?php echo $gender?>&username=<?php echo $user_name?>&designation=<?php echo $designation?>&email=<?php echo $email?>&issued_date=<?php echo $issued_date?>&department=<?php echo $depart?>'" style="background-color:#04AA6D; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;">    
-                            <input class="table" name="details" value="Delete" onclick="location.href='../PHP/deleting.php?employID= <?php echo $employ_id; ?>'" style="background-color:red; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;">    
-                            <!-- <form method="post"><input type="submit" class="table" name="delete" value="Delete" style="background-color:red; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;"><form> -->
-                        </form></td>
-                            <?php
-                                // <td><form method="post">
-                                // <a href="salary.php?ida=echo '$s_num'">
-                                // </form>
-                                // <form method="post"><input type="submit" class="table" name="delete" value="Delete" style="background-color:red"><form></td>
-                            echo '</tr>';
-
-                        // <input type="submit" class="table" name="details" value="Details" onclick="location.href=./salary.php" style="background-color:#04AA6D">
-
-                        
-                        // if(isset($_POST['details'])){
-                        //     // $_SESSION['employee_id'] =$employ_id;
-                        //     // $_SESSION['payment_date']=$pay_date;
-                        //     // $_SESSION['payment_details']=$pay_details;
-                        //     // $_SESSION['status']=$status;
-                        //     // $_SESSION['amount']=$amount;
-                        //     // $_SESSION['bankAcc'] =$bank_acc;
-                        //     // echo $bank_acc;
-                        //     // header("Location:../HTML/salary.php?ida=$s_num");
-                        // }
-
-
-                        // if(isset($_POST['delete'])){
-    
-                        //     echo '<script>
-                        //     Swal.fire({
-                        //         title: "Are you sure?",
-                        //         text: "You wont be able to revert this!",
-                        //         icon: "warning",
-                        //         showCancelButton: true,
-                        //         confirmButtonColor: "#3085d6",
-                        //         cancelButtonColor: "#d33",
-                        //         confirmButtonText: "Yes, delete it!"
-                        //       }).then((result) => {
-                        //         if (result.isConfirmed) {
-                        //         window.location.href="../PHP/deleting.php";
-                        //         }
-                        //       })
-                        //     // </script>';
+                        <td>
+                            <form method="post">
+                                
+                                <input class="table" name="details" value="Details"
+                                    onclick="location.href='employeeInfo.php?employID= <?php echo $employ_id; ?>&forename=<?php echo $name;?>&bankacc=<?php echo $bank_acc;?>&contact=<?php echo $contact?>&gender=<?php echo $gender?>&username=<?php echo $user_name?>&designation=<?php echo $designation?>&email=<?php echo $email?>&issued_date=<?php echo $issued_date?>&department=<?php echo $depart?>'"
+                                    style="background-color:#04AA6D; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;">
+                                <input class="table" name="details" value="Delete"
+                                    onclick="location.href='../PHP/deleting.php?employID= <?php echo $employ_id; ?>'"
+                                    style="background-color:red; text-align:center; width:100px;color:white; padding:5px; cursor:pointer;">
+                                
+                            </form>
+                        </td>
+                        <?php
                             
-                        // }
+                            echo '</tr>';
 }
 }
 ?>
@@ -200,4 +187,5 @@ if($result->num_rows>0){
     </div>
     <script src="../JS/dashboard.js"></script>
 </body>
+
 </html>

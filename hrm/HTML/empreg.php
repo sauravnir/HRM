@@ -1,4 +1,11 @@
 <?php  include('../PHP/connection.php')?>
+<?php 
+session_start();
+if(empty($_SESSION['adminLoggedIn']) || $_SESSION['adminLoggedIn'] == ''){
+    header("Location: main.php");
+    die();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,7 +66,35 @@
           <div class="prf-circle">
             <img src="../assets/pp.png" alt="">
           </div>
-          <h6 class="prf-username">Admin</h6>
+          <div class="dropdown">
+                        <button class="dropbtn">Admin</button>
+                        <!-- <h6 class="prf-username">Admin</h6> -->
+                        <div  id="myDropdown" class="dropdown-content">
+                        <!-- <button id="logout" onclick="logOut()">Logout</button> -->
+                        </div>
+                    </div>
+
+                    <!-- Styling for User drop down -->
+                    <style>
+
+                        .prf-container{
+                            margin-right:40px;
+                        }
+                        .dropbtn {
+  /* background-color: #FFFFFF; */
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+                    </style>
+          
         </div>
       </div>
 
@@ -138,9 +173,8 @@
       </div>
     </div>
   </div>
-  
-
   <script src="../JS/dashboard.js"></script>
+  <script src="../JS/nav-bar.js"></script>
 </body>
 
 </html>

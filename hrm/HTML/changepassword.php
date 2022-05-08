@@ -15,7 +15,7 @@
         <div class="header">      <!---Creating a div class named header-->
             <h2> -------Change Password-------</h2> <!--AN h2 text for labeling the Forgot Password-->
         </div>
-        <form method="post" acton="../PHP/forpass.php"id="form" class="form">   <!--creating a form-->
+        <form method="post" acton="#" id="form" class="form">   <!--creating a form-->
             
             <div class="main-form">
                 <label for="password">New Password</label> <!--creating a label for the username-->
